@@ -15,3 +15,16 @@ bricks = [
 	{'x': 5, 'val': 9},
 	{'x': 2, 'val': 9},
 ]
+
+# движения пуль и разрушение цифр
+
+def move():
+	for b in bullets:
+		b['y'] -= bulletsSpeed
+		if b['y'] < 1:
+			for brick in bricks:
+				if b['x'] == brick['x']:
+					brick['val'] -= 1
+					bullets.remove(b)
+					if brick['val'] == 0:
+						bricks.remove(brick)
